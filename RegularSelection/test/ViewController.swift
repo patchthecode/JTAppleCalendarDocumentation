@@ -38,6 +38,10 @@ extension ViewController: JTAppleCalendarViewDelegate {
         self.calendar(calendar, willDisplay: cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
         return cell
     }
+    
+    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        configureCell(view: cell, cellState: cellState)
+    }
 }
 
 
