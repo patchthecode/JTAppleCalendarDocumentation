@@ -10,6 +10,7 @@ class ViewController: UIViewController {
         guard let cell = view as? DateCell  else { return }
         cell.dateLabel.text = cellState.text
         handleCellTextColor(cell: cell, cellState: cellState)
+        handleCellSelected(cell: cell, cellState: cellState)
     }
     
     func handleCellTextColor(cell: DateCell, cellState: CellState) {
@@ -17,6 +18,15 @@ class ViewController: UIViewController {
             cell.dateLabel.textColor = UIColor.black
         } else {
             cell.dateLabel.textColor = UIColor.gray
+        }
+    }
+    
+    func handleCellSelected(cell: DateCell, cellState: CellState) {
+        if cellState.isSelected {
+            cell.selectedView.layer.cornerRadius =  13
+            cell.selectedView.isHidden = false
+        } else {
+            cell.selectedView.isHidden = true
         }
     }
 }
@@ -40,6 +50,14 @@ extension ViewController: JTAppleCalendarViewDelegate {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        configureCell(view: cell, cellState: cellState)
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        configureCell(view: cell, cellState: cellState)
+    }
+
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         configureCell(view: cell, cellState: cellState)
     }
 }
