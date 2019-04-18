@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  test
-//
-//  Created by Jeron Thomas on 2019-04-11.
-//  Copyright © 2019 AppleInc. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
