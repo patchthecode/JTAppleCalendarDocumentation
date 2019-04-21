@@ -23,17 +23,17 @@
 //
 
 extension JTAppleCalendarView {
-    func validForwardAndBackwordSelectedIndexes(forIndexPath indexPath: IndexPath) -> (forwardIndex: IndexPath?, backIndex: IndexPath?, set: Set<IndexPath>) {
+    func validForwardAndBackwordSelectedIndexes(forIndexPath indexPath: IndexPath, restrictToSection: Bool = true) -> (forwardIndex: IndexPath?, backIndex: IndexPath?, set: Set<IndexPath>) {
         var retval: (forwardIndex: IndexPath?, backIndex: IndexPath?, set: Set<IndexPath>) = (forwardIndex: nil, backIndex: nil, set: [])
         if let validForwardIndex = calendarViewLayout.indexPath(direction: .next, of: indexPath.section, item: indexPath.item),
-            validForwardIndex.section == indexPath.section,
+            (restrictToSection ? validForwardIndex.section == indexPath.section : true),
             selectedCellData[validForwardIndex] != nil {
             retval.forwardIndex = validForwardIndex
             retval.set.insert(validForwardIndex)
         }
         if
             let validBackwardIndex = calendarViewLayout.indexPath(direction: .previous, of: indexPath.section, item: indexPath.item),
-            validBackwardIndex.section == indexPath.section,
+            (restrictToSection ? validBackwardIndex.section == indexPath.section : true),
             selectedCellData[validBackwardIndex] != nil {
             retval.backIndex = validBackwardIndex
             retval.set.insert(validBackwardIndex)
