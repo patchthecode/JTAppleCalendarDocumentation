@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gdf-R9-qez" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="40" y="98" width="336" height="233"/>
+                                <rect key="frame" x="40" y="98" width="336" height="350"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="233" id="szK-qD-Hyi"/>
+                                    <constraint firstAttribute="height" constant="350" id="szK-qD-Hyi"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="3sV-1c-fdV">
                                     <size key="itemSize" width="85" height="84"/>
@@ -80,17 +80,35 @@
                                     <outlet property="ibCalendarDelegate" destination="BYZ-38-t0r" id="Hy5-Lj-QaY"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lua-pM-k6o">
+                                <rect key="frame" x="319" y="60" width="57" height="30"/>
+                                <state key="normal" title="Toggle"/>
+                                <connections>
+                                    <action selector="toggle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I8b-E8-Opf"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfU-tY-Ipy">
+                                <rect key="frame" x="40" y="447" width="336" height="143"/>
+                                <color key="backgroundColor" red="0.51890046886819075" green="0.60826113244881808" blue="0.90369980569948183" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Gdf-R9-qez" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="7BW-VH-kgw"/>
                             <constraint firstItem="Gdf-R9-qez" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="54" id="Hz8-Km-eMO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gdf-R9-qez" secondAttribute="trailing" constant="38" id="e75-rj-Wdq"/>
+                            <constraint firstItem="IfU-tY-Ipy" firstAttribute="top" secondItem="Gdf-R9-qez" secondAttribute="bottom" id="fef-FZ-3eb"/>
+                            <constraint firstItem="IfU-tY-Ipy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="jbj-0I-KcL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lua-pM-k6o" secondAttribute="trailing" constant="38" id="lnU-7J-Sx3"/>
+                            <constraint firstItem="Lua-pM-k6o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="nCT-Or-EcU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IfU-tY-Ipy" secondAttribute="trailing" constant="38" id="rXU-l5-e0v"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IfU-tY-Ipy" secondAttribute="bottom" constant="271" id="zBz-0H-Y8j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="calendarView" destination="Gdf-R9-qez" id="mef-3v-qNV"/>
+                        <outlet property="constraint" destination="szK-qD-Hyi" id="Ajo-c9-HQz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

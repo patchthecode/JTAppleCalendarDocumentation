@@ -3,6 +3,9 @@ import JTAppleCalendar
 
 class ViewController: UIViewController {
     @IBOutlet var calendarView: JTAppleCalendarView!
+    @IBOutlet weak var constraint: NSLayoutConstraint!
+    
+    var numberOfRows = 6
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,23 @@ class ViewController: UIViewController {
             cell.dateLabel.textColor = UIColor.gray
         }
     }
+    
+    @IBAction func toggle(_ sender: Any) {
+        if numberOfRows == 6 {
+            self.constraint.constant = 100
+            self.numberOfRows = 1
+            
+        } else {
+            self.constraint.constant = 350
+            self.numberOfRows = 6
+        }
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.view.layoutIfNeeded()
+        }) { completed in
+            self.calendarView.reloadData(withanchor: Date())
+        }
+    }
 }
 
 extension ViewController: JTAppleCalendarViewDataSource {
@@ -33,7 +53,7 @@ extension ViewController: JTAppleCalendarViewDataSource {
 
         let startDate = formatter.date(from: "2018 01 01")!
         let endDate = Date()
-        return ConfigurationParameters(startDate: startDate, endDate: endDate)
+        return ConfigurationParameters(startDate: startDate, endDate: endDate, numberOfRows: numberOfRows)
     }
 }
 
