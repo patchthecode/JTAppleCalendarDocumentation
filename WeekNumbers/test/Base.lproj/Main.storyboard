@@ -19,20 +19,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gdf-R9-qez" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="40" y="98" width="336" height="233"/>
+                                <rect key="frame" x="70" y="98" width="324" height="233"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="233" id="szK-qD-Hyi"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="3sV-1c-fdV">
                                     <size key="itemSize" width="85" height="84"/>
-                                    <size key="headerReferenceSize" width="50" height="79"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dateCell" id="60r-fL-WQP" customClass="DateCell" customModule="test" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="79" width="85" height="84"/>
+                                        <rect key="frame" x="0.0" y="50" width="85" height="84"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="85" height="84"/>
@@ -56,11 +56,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DateHeader" id="c47-Y9-OXn" customClass="DateHeader" customModule="test" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="336" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="324" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MonthLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odm-vG-4gl">
-                                            <rect key="frame" x="122.5" y="29" width="91" height="21"/>
+                                            <rect key="frame" x="116.5" y="14.5" width="91" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -80,17 +80,77 @@
                                     <outlet property="ibCalendarDelegate" destination="BYZ-38-t0r" id="Hy5-Lj-QaY"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W#" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tbf-22-c2h">
+                                <rect key="frame" x="20" y="98" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.47969850349999998" green="0.83681778169999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="i31-YM-Kl0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g3A-Bd-TUN">
+                                <rect key="frame" x="20" y="148" width="50" height="183"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="183" id="BpS-eo-3Om"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Db7-rR-dck">
+                                    <size key="itemSize" width="50" height="30.5"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WeekCountCell" id="AUh-Uo-zPd" customClass="WeekCountCell" customModule="test" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="30.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="30.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNo-Ek-e8L">
+                                                    <rect key="frame" x="21" y="5" width="8" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.47969850349999998" green="0.83681778169999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="MNo-Ek-e8L" firstAttribute="centerY" secondItem="AUh-Uo-zPd" secondAttribute="centerY" id="Bij-jY-LWk"/>
+                                            <constraint firstItem="MNo-Ek-e8L" firstAttribute="centerX" secondItem="AUh-Uo-zPd" secondAttribute="centerX" id="HBY-aN-us3"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="countLabel" destination="MNo-Ek-e8L" id="bM0-lO-wr3"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="vqw-W7-PV1"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="0IU-30-IFe"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Gdf-R9-qez" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="7BW-VH-kgw"/>
+                            <constraint firstItem="Gdf-R9-qez" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="7BW-VH-kgw"/>
+                            <constraint firstItem="Gdf-R9-qez" firstAttribute="leading" secondItem="Tbf-22-c2h" secondAttribute="trailing" id="7hN-jc-H4V"/>
+                            <constraint firstItem="g3A-Bd-TUN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8dM-Gn-Bwj"/>
+                            <constraint firstItem="Tbf-22-c2h" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="54" id="DVc-2w-NeF"/>
                             <constraint firstItem="Gdf-R9-qez" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="54" id="Hz8-Km-eMO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gdf-R9-qez" secondAttribute="trailing" constant="38" id="e75-rj-Wdq"/>
+                            <constraint firstItem="Tbf-22-c2h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="WaY-9C-sBT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gdf-R9-qez" secondAttribute="trailing" constant="20" id="e75-rj-Wdq"/>
+                            <constraint firstItem="g3A-Bd-TUN" firstAttribute="top" secondItem="Tbf-22-c2h" secondAttribute="bottom" id="gWd-Xj-4Ip"/>
+                            <constraint firstItem="Gdf-R9-qez" firstAttribute="leading" secondItem="g3A-Bd-TUN" secondAttribute="trailing" id="m5b-5n-loA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="calendarView" destination="Gdf-R9-qez" id="mef-3v-qNV"/>
+                        <outlet property="weekCount" destination="g3A-Bd-TUN" id="5Wx-wk-nhd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -452,7 +452,7 @@ extension JTAppleCalendarView {
         
         let rect: CGRect?
         if let offset = offset {
-            rect = CGRect(x: offset.x, y: offset.y, width: frame.width, height: frame.height)
+            rect = CGRect(x: offset.x + 1, y: offset.y + 1, width: frame.width - 2, height: frame.height - 2)
         } else {
             rect = nil
         }

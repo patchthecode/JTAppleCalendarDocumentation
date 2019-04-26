@@ -3,6 +3,7 @@ import JTAppleCalendar
 
 class ViewController: UIViewController {
     @IBOutlet var calendarView: JTAppleCalendarView!
+    @IBOutlet var weekCount: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,11 @@ extension ViewController: JTAppleCalendarViewDelegate {
         configureCell(view: cell, cellState: cellState)
     }
     
+    func calendar(_ calendar: JTAppleCalendarView, willScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        let date: Date = visibleDates.monthDates.first!.date
+        let weekNumber = Calendar.current.component(.weekOfYear, from: date)
+        weekCount.scrollToItem(at: IndexPath(item: weekNumber - 1, section: 0), at: .top, animated: true)
+    }
     
     func calendar(_ calendar: JTAppleCalendarView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTAppleCollectionReusableView {
         let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
@@ -60,5 +66,17 @@ extension ViewController: JTAppleCalendarViewDelegate {
 
     func calendarSizeForMonths(_ calendar: JTAppleCalendarView?) -> MonthSize? {
         return MonthSize(defaultSize: 50)
+    }
+}
+
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 55
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeekCountCell", for: indexPath) as! WeekCountCell
+        cell.countLabel.text = "\(indexPath.item + 1)"
+        return cell
     }
 }
