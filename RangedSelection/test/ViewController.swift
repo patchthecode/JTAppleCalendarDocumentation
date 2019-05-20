@@ -2,8 +2,15 @@ import UIKit
 import JTAppleCalendar
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var calendarView: JTAppleCalendarView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        calendarView.allowsMultipleSelection = true
+        calendarView.isRangeSelectionUsed = true
+        
     }
     
     func configureCell(view: JTAppleCell?, cellState: CellState) {
@@ -22,11 +29,21 @@ class ViewController: UIViewController {
     }
     
     func handleCellSelected(cell: DateCell, cellState: CellState) {
-        if cellState.isSelected {
-            cell.selectedView.layer.cornerRadius =  13
-            cell.selectedView.isHidden = false
-        } else {
-            cell.selectedView.isHidden = true
+        cell.selectedView.isHidden = !cellState.isSelected
+        switch cellState.selectedPosition() {
+        case .left:
+            cell.selectedView.layer.cornerRadius = 20
+            cell.selectedView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+        case .middle:
+            cell.selectedView.layer.cornerRadius = 0
+            cell.selectedView.layer.maskedCorners = []
+        case .right:
+            cell.selectedView.layer.cornerRadius = 20
+            cell.selectedView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
+        case .full:
+            cell.selectedView.layer.cornerRadius = 20
+            cell.selectedView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
+        default: break
         }
     }
 }
